@@ -5,10 +5,10 @@
 // Once game is finished, the outcome should be stated in a string (either, you win, you lose, or it's a tie)
 
 // Pseudocode
-// Create a variable that stores user input
-// Create a variable that makes user input case-insensitive
-// Create a list/array containing rock, paper, scissors
-// Create a function that randomly chooses rock, paper, scissors
+// @Create a variable that stores user input
+// @Create a variable that makes user input case-insensitive
+// @Create a list/array containing rock, paper, scissors
+// @Create a function that randomly chooses rock, paper, scissors
 // Create a function that decides if it is a win lose or tie
 // Create a function that starts the game, asks for user input, and goes through the game till the end
 
@@ -27,4 +27,20 @@ function getComputerChoice(){
     return computer_choice;
 }
 
-console.log(getComputerChoice())
+// Create a function that decides if it is a win, lose or tie
+function getOutcome(){
+    if (player_input == computer_choice){
+        return "Tie";}
+    else if (
+        (player_input == "rock" && computer_choice == "paper")||
+        (player_input == "paper" && computer_choice == "scissors")||
+        (player_input == "scissors" && computer_choice == "rock")
+    ){
+        return "Lose";}
+    else {
+        return "Win"
+    }
+}
+// Paper beats Rock
+// Rock beats Scissors
+// Scissors beats Paper
