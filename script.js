@@ -5,18 +5,19 @@
 // Once game is finished, the outcome should be stated in a string (either, you win, you lose, or it's a tie)
 
 // Pseudocode
-// @Create a variable that stores user input
-// @Create a variable that makes user input case-insensitive
+// @Create a function that asks for user input
 // @Create a list/array containing rock, paper, scissors
 // @Create a function that randomly chooses rock, paper, scissors
-// Create a function that decides if it is a win lose or tie
-// Create a function that starts the game, asks for user input, and goes through the game till the end
+// @Create a function that decides if it is a win lose or tie
+// @Create a function that starts the game, asks for user input, and goes through the game till the end
 
-// Create a variable that stores user input
-let input = prompt("Choose Rock, Paper, or Scissors");
 
-// Create a variable that makes user input case-insensitive
-let player_input = input.toLowerCase();
+// Create a function that asks for user input
+function getInput(){
+    let input = prompt("Choose Rock, Paper, or Scissors");
+    let player_input = input ? input.toLowerCase() : null;
+    return player_input;
+}
 
 // Create a list/array containing rock, paper, scissors
 const choice = ["rock", "paper", "scissors"]
@@ -28,8 +29,11 @@ function getComputerChoice(){
 }
 
 // Create a function that decides if it is a win, lose or tie
-function getOutcome(){
-    if (player_input == computer_choice){
+function getOutcome(player_input,computer_choice){
+    if (!player_input){
+        return "Invalid input, try again"
+    }
+    else if (player_input == computer_choice){
         return "Tie";}
     else if (
         (player_input == "rock" && computer_choice == "paper")||
@@ -41,6 +45,14 @@ function getOutcome(){
         return "Win"
     }
 }
-// Paper beats Rock
-// Rock beats Scissors
-// Scissors beats Paper
+
+// Create a function that starts the game, asks for user input, and goes through the game
+function startGame(player_selection,computer_selection){
+    let player_input = getInput();
+    let computer_choice = getComputerChoice();
+    let outcome = getOutcome(player_input,computer_choice);
+    console.log(`Player chose: ${player_input}`);
+    console.log(`Comptuer chose: ${computer_choice}`);
+    console.log(`You ${outcome}`);
+}
+
