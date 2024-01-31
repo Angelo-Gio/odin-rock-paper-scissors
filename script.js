@@ -10,6 +10,12 @@
 // @Create a function that randomly chooses rock, paper, scissors
 // @Create a function that decides if it is a win lose or tie
 // @Create a function that starts the game, asks for user input, and goes through the game till the end
+// @Create a function that plays the game 5 times, and keeps count of how many
+// times the computer won, vs how many you won and says who won at the end
+// @Create a counter variable for player
+// @Create a counter variable for computer
+
+
 
 
 // Create a function that asks for user input
@@ -46,13 +52,33 @@ function getOutcome(player_input,computer_choice){
     }
 }
 
+// Create a counter variable for player + computer
+let winPlayer = 0
+let winComputer = 0
+
 // Create a function that starts the game, asks for user input, and goes through the game
 function startGame(player_selection,computer_selection){
     let player_input = getInput();
     let computer_choice = getComputerChoice();
     let outcome = getOutcome(player_input,computer_choice);
     console.log(`Player chose: ${player_input}`);
-    console.log(`Comptuer chose: ${computer_choice}`);
+    console.log(`Computer chose: ${computer_choice}`);
     console.log(`You ${outcome}`);
+    
+    if (outcome == "Tie"){
+        console.log(`You have tied, the score is Player: ${winPlayer} | Computer: ${winComputer}`)
+    } else if(outcome == "Win"){
+    winPlayer++;
+    } else{
+        winComputer++;
+    }
+
+    console.log(`The score is Player: ${winPlayer} | Computer: ${winComputer}`)
+    return{winPlayer,winComputer};
 }
 
+startGame();
+startGame();
+startGame();
+startGame();
+startGame();
